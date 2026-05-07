@@ -337,14 +337,60 @@ function drawChart() {
 // ── Render Explore Screen ─────────────────
 function renderExplore() {
   const grid = document.getElementById('explore-grid');
-  grid.innerHTML = state.cuisines.map(c => `
-    <article class="explore-card">
-      <div class="explore-card-name">${c.name}</div>
-      <div class="explore-card-desc">${c.description}</div>
-      <span class="tag tag-pink">${c.budget}</span>
-      <span class="tag tag-mint">${c.category}</span>
-    </article>
-  `).join('');
+
+  const categoryInfo = {
+    comfort: {
+      title: 'Teddy - Cozy Comfort',
+      bear: 'assets/brown-bear.png',
+      intro: 'warm, filling, familiar picks'
+    },
+    spicy: {
+      title: 'Spice - Spicy Adventure',
+      bear: 'assets/spicy-bear.png',
+      intro: 'bold, flavorful, exciting picks'
+    },
+    sweet: {
+      title: 'Cherry - Sweet Treat',
+      bear: 'assets/pink-cherry-bear.png',
+      intro: 'cute, sweet, dessert-y picks'
+    },
+    fresh: {
+      title: 'Rose - Fresh & Light',
+      bear: 'assets/green-pinkflower-bear.png',
+      intro: 'clean, refreshing, balanced picks'
+    },
+    quick: {
+      title: 'Dasha - Quick Bite',
+      bear: 'assets/pink-lemonade-bear.png',
+      intro: 'easy, fast, satisfying picks'
+    }
+  };
+
+  grid.innerHTML = Object.keys(categoryInfo).map(category => {
+    const cuisines = state.cuisines.filter(c => c.category === category);
+    const info = categoryInfo[category];
+
+    return `
+      <section class="explore-category-card">
+        <div class="explore-category-header">
+          <img src="${info.bear}" alt="${info.title} bear" class="explore-bear" />
+          <div>
+            <h2>${info.title}</h2>
+            <p>${info.intro}</p>
+          </div>
+        </div>
+
+        <div class="cuisine-pill-list">
+          ${cuisines.map(c => `
+            <article class="cuisine-pill">
+              <span class="cuisine-pill-name">${c.name}</span>
+              <span class="cuisine-pill-meta">${c.budget} • ${c.diningStyle}</span>
+            </article>
+          `).join('')}
+        </div>
+      </section>
+    `;
+  }).join('');
 }
 
 // ── Reset (Try Again) ─────────────────────

@@ -553,4 +553,109 @@ button:focus-visible {
   flex: 1;
   margin-bottom: 0;
 }
- 
+
+/* ── Cute Explore / All Cuisines Screen ── */
+.explore-header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.explore-header .title-display {
+  font-size: clamp(2rem, 8vw, 3rem);
+  margin-bottom: 8px;
+}
+
+.explore-subtitle {
+  background: var(--cream);
+  border: var(--border);
+  border-radius: var(--radius-pill);
+  color: var(--brown-dark);
+  font-weight: 800;
+  padding: 8px 18px;
+  box-shadow: var(--shadow-sm);
+}
+
+.explore-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+  max-width: 540px;
+  margin-bottom: 28px;
+}
+
+.explore-category-card {
+  background: var(--cream);
+  border: var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+.explore-category-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.explore-bear {
+  width: 74px;
+  height: 74px;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.12));
+}
+
+.explore-category-header h2 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--pink-dark);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.explore-category-header p {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--brown);
+  line-height: 1.35;
+}
+
+.cuisine-pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cuisine-pill {
+  background: var(--white);
+  border: 1.5px solid var(--pink-light);
+  border-radius: 18px;
+  padding: 10px 12px;
+  box-shadow: var(--shadow-sm);
+  flex: 1 1 145px;
+}
+
+.cuisine-pill-name {
+  display: block;
+  font-weight: 900;
+  color: var(--brown-dark);
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.cuisine-pill-meta {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--pink-dark);
+}
+
+@media (min-width: 760px) {
+  .explore-grid {
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
